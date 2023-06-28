@@ -1,9 +1,12 @@
 // return a Promise
 
 function getResponseFromAPI() {
-  return new Promise((resolve,reject) => {
-    if (1 === 1) resolve();
-    else reject();
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 300);
+    reject();
   });
 }
 
+console.log(getResponseFromAPI);
