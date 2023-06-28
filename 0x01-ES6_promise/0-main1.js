@@ -1,3 +1,15 @@
-import { taskFirst, taskNext } from './0-constants';
+//import getResponseFromAPI from './0-promise';
+//
+// return a Promise
 
-console.log(`${taskFirst()} ${taskNext()}`);
+function getResponseFromAPI() {
+  return new Promise((resolve, reject) => {
+    resolve();
+    reject();
+  });
+}
+
+getResponseFromAPI();
+
+const response = getResponseFromAPI();
+console.log(response instanceof Promise);
