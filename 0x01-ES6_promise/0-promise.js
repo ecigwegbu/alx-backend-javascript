@@ -7,4 +7,4 @@ function getResponseFromAPI() {
   });
 }
 
-console.log(getResponseFromAPI);
+getResponseFromAPI();
