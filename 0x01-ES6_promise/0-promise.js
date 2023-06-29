@@ -1,10 +1,6 @@
 // return a Promise
 
 function getResponseFromAPI() {
-  return new Promise((resolve, reject) => {
-    resolve();
-    reject();
-  });
+  return new Promise((resolve) => resolve());
 }
-
-getResponseFromAPI();
+export default getResponseFromAPI;
