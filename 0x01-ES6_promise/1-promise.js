@@ -1,4 +1,4 @@
-// return a Promise
+// return a Promise with resolve and reject
 
 function getFullResponseFromAPI(success) {
   return new Promise((resolve, reject) => {
@@ -10,4 +10,4 @@ function getFullResponseFromAPI(success) {
   });
 }
 
-getFullResponseFromAPI();
+export default getFullResponseFromAPI;
