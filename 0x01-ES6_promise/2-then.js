@@ -1,13 +1,9 @@
-// return a Promise
+// return a Promise with resolve and reject
 
-function getFullResponseFromAPI(success) {
-  return new Promise((resolve, reject) => {
-    if (success) {
-      resolve({ status: 200, body: 'Success' });
-    } else {
-      reject(new Error('The fake API is not working currently'));
-    }
-  });
+function handleResponseFromAPI(promise) {
+  promise
+    .then(() => "{ status: 200, body: 'Success' }")
+    .catch(() => new Error())
+    .finally(() => console.log('Got a response from the API'));
 }
-
-getFullResponseFromAPI();
+export default handleResponseFromAPI;
