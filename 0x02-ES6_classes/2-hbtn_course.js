@@ -48,14 +48,16 @@ export default class HolbertonCourse {
     return this._length;
   }
 
-  set students(stdt) {
-    if (typeof stdt !== 'string') {
-      throw new TypeError('Student must be a string');
-    }
-    this._students.push(stdt);
+  set students(stdts) {
+    stdts.forEach((stdt) => {
+      if (typeof stdt !== 'string') {
+        throw new TypeError('Student must be a string');
+      }
+    });
+    this._students = stdts;
   }
 
   get students() {
-    return this._students.pop();
+    return this._students;
   }
 }
