@@ -1,10 +1,20 @@
-// make classrooms from a Class
+// Airport
 
-import ClassRoom from './0-classroom';
+export default class Airport {
+  constructor(name, code) {
+    // check name
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    // check code
+    if (typeof code !== 'string') {
+      throw new TypeError('Code must be a string');
+    }
+    this._name = name;
+    this._code = code;
+  }
 
-export default function initializeRooms() {
-  const class1 = new ClassRoom(19);
-  const class2 = new ClassRoom(20);
-  const class3 = new ClassRoom(34);
-  return [class1, class2, class3];
+  toString() {
+    return `[object ${this._code}]`;
+  }
 }
