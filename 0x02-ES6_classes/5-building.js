@@ -10,7 +10,7 @@ export default class Building {
     // if (this.constructor.toString() === 'class TestBuilding extends _building.default {}') {
     if (this instanceof Building && this.constructor !== Building) {
       // eslint-disable-next-line no-prototype-builtins
-      if ((!this.hasOwnProperty('evacuationWarningMessage'))) {
+      if ((this.hasOwnProperty('evacuationWarningMessage'))) {
         // must override method
         throw new Error('Class extending Building must override evacuationWarningMessage');
       }
