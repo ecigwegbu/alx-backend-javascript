@@ -9,9 +9,6 @@ export default class Car {
 
   // clone car
   cloneCar() {
-    // clone car code
-    // return new Car(this._brand, this._motor, this._color);
-    // return Object.assign(Object.create(Object.getPrototypeOf(this)), this);
     return Object.assign(new this.constructor(), this);
   }
 }
