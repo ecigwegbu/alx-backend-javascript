@@ -1,5 +1,7 @@
 export default function returnHowManyArguments(...args) {
   let argCount = 0;
-  args.forEach(() => { argCount += 1; });
+  for (const arg of args) {
+    if (arg) argCount += 1;
+  }
   return argCount;
 }
