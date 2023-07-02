@@ -1,10 +1,30 @@
-// make classrooms from a Class
+// Vroom
 
-import ClassRoom from './0-classroom';
+export default class Car {
+  constructor(brand, motor, color) {
+    // brand: String, motor: string, color: String
+    // check brand
+    if (typeof brand !== 'string') {
+      throw new TypeError('Brand must be a string');
+    }
+    // check motor
+    if (typeof motor !== 'string') {
+      throw new TypeError('Motor must be a string');
+    }
+    // check motor
+    if (typeof color !== 'string') {
+      throw new TypeError('Color must be a string');
+    }
 
-export default function initializeRooms() {
-  const class1 = new ClassRoom(19);
-  const class2 = new ClassRoom(20);
-  const class3 = new ClassRoom(34);
-  return [class1, class2, class3];
+    this._brand = brand;
+    this._motor = motor;
+    this._color = color;
+  }
+
+  // clone car
+  cloneCar() {
+    // clone car code
+    // return new Car(this._brand, this._motor, this._color);
+    return Object.assign(Object.create(Object.getPrototypeOf(this)), this);
+  }
 }
