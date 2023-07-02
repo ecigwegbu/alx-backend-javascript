@@ -1,10 +1,15 @@
-// make classrooms from a Class
+// ev car
+import Car from './10-car';
 
-import ClassRoom from './0-classroom';
+export default class EVCar extends Car {
+  constructor(brand, motor, color, range) {
+    super(brand, motor, color);
+    this._range = range;
+  }
 
-export default function initializeRooms() {
-  const class1 = new ClassRoom(19);
-  const class2 = new ClassRoom(20);
-  const class3 = new ClassRoom(34);
-  return [class1, class2, class3];
+  // override cloneCar
+  cloneCar() {
+    // clone here - class will be base class
+    return Object.assign(new Car(), this);
+  }
 }
