@@ -1,20 +1,18 @@
-#!/bin/node
-// Create a function named getListStudents that returns an array of objects.
-//
-// Each object should have three attributes: id (Number), firstName (String),
-// and location (String).
-//
-// The array contains the following students in order:
-//
-// Guillaume, id: 1, in San Francisco
-// James, id: 2, in Columbia
-// Serena, id: 5, in San Francisco
+// Create a function getListStudentIds that returns an array of ids from a
+// list of object.
 
-export default function getListStudents() {
-  const listStudents = [
-    { id: 1, firstName: 'Guillaume', location: 'San Francisco' },
-    { id: 2, firstName: 'James', location: 'Columbia' },
-    { id: 3, firstName: 'Serena', location: 'San Francisco' },
-  ];
-  return listStudents;
+// This function is taking one argument which is an array of objects -
+// and this array is the same format as getListStudents from the previous
+// task.
+
+// If the argument is not an array, the function is returning an empty array.
+
+// You must use the map function on the array.
+
+export default function (listStudents) {
+  // code here
+  if (!Array.isArray(listStudents)) {
+    return [];
+  }
+  return listStudents.map((item) => item.id);
 }

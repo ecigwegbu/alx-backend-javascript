@@ -1,20 +1,15 @@
-#!/bin/node
-// Create a function named getListStudents that returns an array of objects.
+// Create a function getStudentsByLocation that returns an array of
+// objects who are located in a specific city.
 //
-// Each object should have three attributes: id (Number), firstName (String),
-// and location (String).
-//
-// The array contains the following students in order:
-//
-// Guillaume, id: 1, in San Francisco
-// James, id: 2, in Columbia
-// Serena, id: 5, in San Francisco
+// It should accept a list of students (from getListStudents) and a
+// city (string) as parameters.
 
-export default function getListStudents() {
-  const listStudents = [
-    { id: 1, firstName: 'Guillaume', location: 'San Francisco' },
-    { id: 2, firstName: 'James', location: 'Columbia' },
-    { id: 3, firstName: 'Serena', location: 'San Francisco' },
-  ];
-  return listStudents;
+// You must use the filter function on the array.
+
+export default function getStudentsByLocation(listStudents, city) {
+  // code here
+  if (!Array.isArray(listStudents) || !city) {
+    return [];
+  }
+  return listStudents.filter((student) => student.location === city);
 }
