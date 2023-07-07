@@ -1,1 +1,8 @@
+package.json
+.eslintrc.js
+tsconfig.json
+webpack.config.js
+*.bak
+*.tmp
 node_modules
+node-modules
