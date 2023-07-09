@@ -1,20 +1,25 @@
-#!/bin/node
-// Create a function named getListStudents that returns an array of objects.
+// Create a function updateStudentGradeByCity that returns an array of
+// students for a specific city with their new grade
 //
-// Each object should have three attributes: id (Number), firstName (String),
-// and location (String).
-//
-// The array contains the following students in order:
-//
-// Guillaume, id: 1, in San Francisco
-// James, id: 2, in Columbia
-// Serena, id: 5, in San Francisco
+// It should accept a list of students (from getListStudents), a city (String)
+// and newGrades (Array of “grade” objects) as parameters.
 
-export default function getListStudents() {
-  const listStudents = [
-    { id: 1, firstName: 'Guillaume', location: 'San Francisco' },
-    { id: 2, firstName: 'James', location: 'Columbia' },
-    { id: 3, firstName: 'Serena', location: 'San Francisco' },
-  ];
-  return listStudents;
+// newGrades is an array of objects with this format:
+
+//   {
+//     studentId: 31,
+//     grade: 78,
+//   }
+// If a student doesn’t have grade in newGrades, the final grade should be N/A
+
+// You must use filter and map combined.
+
+export default function updateStudentGradeByCity(listStudents, city, newGrades) {
+  // code here
+  if (!Array.isArray(listStudents) || !city || !newGrades) {
+    return [];
+  }
+  const studentsOfCity = listStudents.filter((student) => student.location === city);
+  const studentsOfCityWithGrades = studentsOfCity.map((student) => grade(student));
+  return studentsOfCityWithGrades;
 }

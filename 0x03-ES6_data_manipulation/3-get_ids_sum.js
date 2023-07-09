@@ -11,8 +11,6 @@ export default function getStudentIdsSum(listStudents) {
     return [];
   }
   function getSum(total, elt) {
-    // return total + Math.round(num);
-    // console.log('Total: ', total, 'elt: ', elt);
     return total + elt.id;
   }
 
