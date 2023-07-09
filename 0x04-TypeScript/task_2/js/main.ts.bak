@@ -75,19 +75,3 @@ function executeWork(employee: Teacher | Director): void {
 // test Task 6
 executeWork(createEmployee(200));  // Getting to work
 executeWork(createEmployee(1000));  // Getting to director tasks
-
-// Task7: String Literal types
-
-type Subjects = 'Math' | 'History';
-
-function teachClass(todayClass: Subjects): string {
-  // code here
-  if (todayClass === 'Math') {
-    console.log('Teaching Math')
-    return 'Teaching Math';
-  }
-    console.log('Teaching History');
-    return 'Teaching History';
-}
-teachClass('Math');  // Teaching Math
-teachClass('History');  // Teaching History

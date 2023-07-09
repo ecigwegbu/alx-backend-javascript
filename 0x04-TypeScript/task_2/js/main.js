@@ -66,3 +66,14 @@ function executeWork(employee) {
 // test Task 6
 executeWork(createEmployee(200)); // Getting to work
 executeWork(createEmployee(1000)); // Getting to director tasks
+function teachClass(todayClass) {
+    // code here
+    if (todayClass === 'Math') {
+        console.log('Teaching Math');
+        return 'Teaching Math';
+    }
+    console.log('Teaching History');
+    return 'Teaching History';
+}
+teachClass('Math'); // Teaching Math
+teachClass('History'); // Teaching History
