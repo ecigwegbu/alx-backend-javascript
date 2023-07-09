@@ -1,4 +1,5 @@
-// task 1: 1. Let's build a Teacher interface
+// Interfaces, etc
+// test the Teacher interface
 var teacher3 = {
     firstName: 'John',
     fullTimeEmployee: false,
@@ -7,6 +8,7 @@ var teacher3 = {
     contract: false
 };
 console.log(teacher3);
+// Test the Directors interface
 var director1 = {
     firstName: 'John',
     lastName: 'Doe',

@@ -23,6 +23,13 @@ module.exports = {
   },
   devServer: {
     // contentBase: "./dist"
+    static: [
+      {
+        directory: './dist',
+	publicPath: '/',
+	serveIndex: true
+      }
+    ]
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
