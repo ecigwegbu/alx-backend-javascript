@@ -1,28 +1,28 @@
 // task 0: 0. Creating an interface for a student
 
 interface Student {
-  firstName: string,
-  lastName: string,
-  age: number,
-  location: string  
+  firstName: string;
+  lastName: string;
+  age: number;
+  location: string
 }
 
 const student1: Student = {
   firstName: 'John',
   lastName: 'Doe',
   age: 24,
-  location: 'Enugu'  
+  location: 'Enugu'
 }
 
 const student2: Student = {
   firstName: 'Michael',
   lastName: 'Jackson',
   age: 43,
-  location: 'London'  
+  location: 'London'
 }
 
 // array containing two students
-const studentList = [student1, student2];
+const studentList: [Student, Student] = [student1, student2];
 
 // Table of Students
 console.log('List of Students:');
