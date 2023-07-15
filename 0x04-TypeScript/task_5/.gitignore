@@ -1,0 +1,9 @@
+node_modules
+js/.vscode
+package-lock.json
+*.bak
+*.tmp
+temp
+*.v*
+v0
+large
