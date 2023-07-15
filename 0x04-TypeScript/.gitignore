@@ -1,0 +1,6 @@
+tsconfig.js
+node_modules
+.vscode
+*.tmp
+*.bak
+
