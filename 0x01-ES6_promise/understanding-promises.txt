@@ -1,0 +1,34 @@
+// return a Promise
+
+Understanding JavaScript's Promise Object
+
+function myAPI() {
+  return new Promise((resolve, reject) => {
+    const success = Math.random() > 0.5; // Randomly determine success or failure
+
+    setTimeout(() =>
+      {
+        if (success) {
+          resolve('Operation successful!');
+        } else {
+          reject(new Error('Operation failed!'));
+        }
+      },
+      100
+    );
+    });
+}
+export default myAPI;
+
+// myAPI is a API function. This one takes no argument, and like all API's, returns a Promise object which it generates using the new Promise() constructor.
+// The Promise() constructor accepts one argument, which is a function, otherwise known as a callback function. This function is annonymous in the above example, but let's call it the executor.
+The executor itself takes two arguments, resolve and reject, also functions in their own right, otherwise known as callback functions. These callback functions are the functions that the API will call when it is done carrying out its asynchronous task, whatever that task might be. The task might be fetching data from a warehouse or predicting the weather - whatever. But when the API is done with that task, it will call two functions which are arguments to its executor function, resolve and reject. It will call resolve if its task succeeded and reject if its task failed. In the above example the task in question is to generate a random number and test if it is higher or lower than 0.5
+
+Now in the success case (generated number higher than 0.5, it will call the callback function resolve, pasing it a single argument which is the result of its operation for onward transfer to the caller of the API. This argument could be any type of object - a string or a JSON object, for example.
+In the event that the task failed (the generated random number is less than 0.5 in above example), the executor function calls the reject callback function and passes it an argument which is typically an error object explaining the reason for the failure.
+
+The resolve and reject functions are not defined by the API. It is the responsibility of the caller of the API to define and provide these two functions. How does the caller of the API do that?
+In the call to the API, the caller provides the following methods:
+	then(resolve, reject)  - this method takes up to two arguments, the first being the resolve function and the second being the reject function. Typically only the first argument (the resolve function) is provided. The then method returns a Promise objectwhich still encapsulates the then method and so can be used again in a chain call (see below) 
+	catch(reject) - this method takes only one argument, the reject function, which is the same as the second argument of the then method. The catch method provides the definition of the reject function, and returns another Promise object. The reject method takes one argument which is typically the object containing the reason for rejection, usually an error object. The catch method is typically invoked from the promise object returned by an earlier invoked then method in a call chain.
+
