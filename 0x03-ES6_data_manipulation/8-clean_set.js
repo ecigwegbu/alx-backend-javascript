@@ -3,7 +3,7 @@
 // const print = (...x) => console.log(...x); // custom print() function
 
 export default function cleanSet(set, startString) {
-  if (!startString || !set) {
+  if (!startString || !set || (typeof startString !== 'string')) {
     return '';
   }
   let str = '';
