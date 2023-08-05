@@ -1,20 +1,17 @@
 #!/bin/node
-// Create a function named getListStudents that returns an array of objects.
-//
-// Each object should have three attributes: id (Number), firstName (String),
-// and location (String).
-//
-// The array contains the following students in order:
-//
-// Guillaume, id: 1, in San Francisco
-// James, id: 2, in Columbia
-// Serena, id: 5, in San Francisco
+// extract elements starting from a substring from an array
+// const print = (...x) => console.log(...x); // custom print() function
 
-export default function getListStudents() {
-  const listStudents = [
-    { id: 1, firstName: 'Guillaume', location: 'San Francisco' },
-    { id: 2, firstName: 'James', location: 'Columbia' },
-    { id: 3, firstName: 'Serena', location: 'San Francisco' },
-  ];
-  return listStudents;
+export default function cleanSet(set, startString) {
+  if (!startString || !set) {
+    return '';
+  }
+  let str = '';
+  const array = Array.from(set);
+  array.forEach((element) => {
+    if (element.startsWith(startString)) {
+      str += `-${element.slice(startString.length)}`;
+    }
+  });
+  return str.slice(1);
 }
