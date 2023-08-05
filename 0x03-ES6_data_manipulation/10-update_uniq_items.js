@@ -1,20 +1,24 @@
 #!/bin/node
-// Create a function named getListStudents that returns an array of objects.
-//
-// Each object should have three attributes: id (Number), firstName (String),
-// and location (String).
-//
-// The array contains the following students in order:
-//
-// Guillaume, id: 1, in San Francisco
-// James, id: 2, in Columbia
-// Serena, id: 5, in San Francisco
+// Create groceries list
+// const print = (...x) => console.log(...x); // custom print() function
+/*
+export default function groceriesList() {
+  return new Map()
+    .set('Apples', 10)
+    .set('Tomatoes', 10)
+    .set('Pasta', 1)
+    .set('Rice', 1)
+    .set('Banana', 5);
+*/
 
-export default function getListStudents() {
-  const listStudents = [
-    { id: 1, firstName: 'Guillaume', location: 'San Francisco' },
-    { id: 2, firstName: 'James', location: 'Columbia' },
-    { id: 3, firstName: 'Serena', location: 'San Francisco' },
-  ];
-  return listStudents;
+export default function updateUniqueItems(map) {
+  if (!map) {
+    throw new Error('Cannot process');
+  }
+  map.forEach((val, key, map) => {
+    if (val === 1) {
+      map.set(key, 100);
+    }
+  });
+  return map;
 }
