@@ -9,7 +9,7 @@ export default function cleanSet(set, startString) {
   let str = '';
   const array = Array.from(set);
   array.forEach((element) => {
-    if (element.startsWith(startString)) {
+    if (element && element.startsWith(startString)) {
       str += `-${element.slice(startString.length)}`;
     }
   });
