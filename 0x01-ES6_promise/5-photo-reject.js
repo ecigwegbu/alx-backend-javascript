@@ -1,13 +1,7 @@
-// return a Promise
+// Reject the promises
 
-function getFullResponseFromAPI(success) {
-  return new Promise((resolve, reject) => {
-    if (success) {
-      resolve({ status: 200, body: 'Success' });
-    } else {
-      reject(new Error('The fake API is not working currently'));
-    }
-  });
+function uploadPhoto(fileName) {
+  return Promise.reject(new Error(`${fileName} cannot be processed`));
 }
 
-getFullResponseFromAPI();
+export default uploadPhoto;
