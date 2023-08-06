@@ -1,13 +1,11 @@
-// return a Promise
+// In this file, import uploadPhoto and createUser from utils.js
 
-function getFullResponseFromAPI(success) {
-  return new Promise((resolve, reject) => {
-    if (success) {
-      resolve({ status: 200, body: 'Success' });
-    } else {
-      reject(new Error('The fake API is not working currently'));
-    }
-  });
+async function signUpUser (firstName, lastName) {
+  try {
+    const [result1, result2] = await Promise.all([uploadPhoto(), createUser()]);
+    console.log(result1.body, result2.firstName, result2.lastName);
+  } catch (error) {
+    console.log('Signup system offline');
+  }
 }
-
-getFullResponseFromAPI();
+export default handleProfileSignup;
