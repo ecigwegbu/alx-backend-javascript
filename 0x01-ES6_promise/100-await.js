@@ -1,13 +1,20 @@
-// return a Promise
+// 10.Await/Async
+import { uploadPhoto, createUser } from './utils';
 
-function getFullResponseFromAPI(success) {
-  return new Promise((resolve, reject) => {
-    if (success) {
-      resolve({ status: 200, body: 'Success' });
-    } else {
-      reject(new Error('The fake API is not working currently'));
-    }
-  });
+async function asyncUploadUser() {
+  try {
+    const result = await Promise.all([uploadPhoto(), createUser()]);
+    console.log(typeof result);
+    return ({
+      photo: result[0],
+      user: result[1],
+    });
+  } catch (_) {
+    return ({
+      photo: null,
+      user: null,
+    });
+  }
 }
 
-getFullResponseFromAPI();
+export default asyncUploadUser;
