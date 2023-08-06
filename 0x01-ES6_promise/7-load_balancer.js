@@ -1,6 +1,6 @@
 // load_balancer
 
-function loadBalancer(chinaDownload, USDownload) {
+async function loadBalancer(chinaDownload, USDownload) {
   return await Promise.any([chinaDownload, USDownload]);
 }
 
