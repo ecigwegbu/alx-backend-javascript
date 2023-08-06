@@ -1,13 +1,13 @@
 // return a Promise
 
-function getFullResponseFromAPI(success) {
-  return new Promise((resolve, reject) => {
-    if (success) {
-      resolve({ status: 200, body: 'Success' });
-    } else {
-      reject(new Error('The fake API is not working currently'));
-    }
-  });
+function guardrail(mathFunction) {
+  const queue = [];
+  try {
+    queue.push(mathFunction(), 'Guardrail was processed');
+  } catch (_) {
+    queue.push('Error: cannot divide by 0', 'Guardrail was processed');
+  }
+  return queue;
 }
 
-getFullResponseFromAPI();
+export default guardrail;
