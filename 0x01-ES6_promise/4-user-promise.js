@@ -1,11 +1,10 @@
-// In this file, import uploadPhoto and createUser from utils.js
+// Simple Promise
 
-async function signUpUser (firstName, lastName) {
-  try {
-    const [result1, result2] = await Promise.all([uploadPhoto(), createUser()]);
-    console.log(result1.body, result2.firstName, result2.lastName);
-  } catch (error) {
-    console.log('Signup system offline');
-  }
+function signUpUser(firstName, lastName) {
+  const obj = {
+    firstName,
+    lastName,
+  };
+  return Promise.resolve(obj);
 }
-export default handleProfileSignup;
+export default signUpUser;
