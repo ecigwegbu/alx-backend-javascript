@@ -1,0 +1,42 @@
+const fs = require('fs');
+
+fs.readFile('/alx/alx-backend-javascript/0x05-Node_JS_basic/database.csv', 'utf8', (err, fileText) => {
+  if (err) {
+    throw new Error('Cannot load the database');
+    // return;
+  }
+
+  // Split the file content by lines
+  const lines = fileText.split('\n').filter(line => line.trim() !== '');
+
+  // Extract fieldNames from the first line
+  const fieldNames = lines[0].split(',');
+
+  // Process the remaining lines
+  const records = lines.slice(1).map(line => {
+    const values = line.split(',');
+    const record = {};
+    fieldNames.forEach((header, index) => {
+      record[header.trim()] = values[index].trim();
+    });
+    return record;
+  });
+
+  // Print the total count of records
+  console.log(`Number of students: ${records.length}`);
+
+  // Group by field type and collect names
+  const fieldGroups = {};
+
+  records.forEach(record => {
+    if (!fieldGroups[record.field]) {
+      fieldGroups[record.field] = [];
+    }
+    fieldGroups[record.field].push(record.firstname);
+  });
+
+  // Output the results by field type
+  for (let field in fieldGroups) {
+    console.log(`Number of students in ${field}: ${fieldGroups[field].length}. List: ${fieldGroups[field].join(', ')}`);
+  }
+});
