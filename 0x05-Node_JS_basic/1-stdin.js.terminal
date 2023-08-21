@@ -3,13 +3,17 @@ const readline = require('readline');
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
+  terminal: process.stdin.isTTY, // check if input is coming from a terminal
 });
 
 rl.question('Welcome to Holberton School, what is your name?\n', (answer) => {
   console.log(`Your name is: ${answer}`);
+
   rl.on('close', () => {
-    console.log('This important software is now closing')
+    if (process.stdin.isTTY) {
+      console.log('This important software is now closing');
+    }
   });
 
   rl.close();
