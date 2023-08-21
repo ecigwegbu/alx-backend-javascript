@@ -6,3 +6,4 @@ node_modules
 *.js.v*
 *.bak.*
 *.bak*
+package-lock.json

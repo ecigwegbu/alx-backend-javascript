@@ -1,8 +1,7 @@
-#!/usr/bin/env node
 // Executing basic JavaScript wit Node.js
 
-Function displayMessage (arg: String) {
-  // print the argument in STDOUR
+function displayMessage(arg) {
+  // print the argument in STDOUT
   console.log(arg);
 }
 module.exports = displayMessage;
