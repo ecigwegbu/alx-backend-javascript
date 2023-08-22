@@ -52,6 +52,7 @@ async function countStudents(path) {
 
 const database = process.argv[2];
 const port = 1245;
+const hostname = '127.0.0.1';
 
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
@@ -71,6 +72,8 @@ const app = http.createServer((req, res) => {
   }
 });
 
-app.listen(port);
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
 
 module.exports = app;
