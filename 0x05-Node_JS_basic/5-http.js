@@ -55,7 +55,7 @@ const port = 1245;
 
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
-    res.statusCode = 200;
+    // res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
