@@ -48,7 +48,7 @@ async function countStudents(path) {
     throw new Error('Cannot load the database');
   }
 }
-exports.countStudents = countStudents;
+// exports.countStudents = countStudents;
 
 const database = process.argv[2];
 const port = 1245;
@@ -73,4 +73,4 @@ const app = http.createServer((req, res) => {
 
 app.listen(port);
 
-exports.app = app;
+module.exports.app = app;
