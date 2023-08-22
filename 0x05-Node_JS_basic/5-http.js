@@ -6,8 +6,6 @@ const fs = require('fs').promises;
 let outText = '';
 async function countStudents(path) {
   try {
-    // console.log('---Here-----1-----');
-    // console.log('\n---OUTTEXT-', outText, 'STOP\n');
     // Read the file asynchronously
     const fileContent = await fs.readFile(path, 'utf8');
 
@@ -27,10 +25,7 @@ async function countStudents(path) {
       return record;
     });
 
-    // console.log('---Here-----2-----');
-    // console.log('\n---OUTTEXT-', fileContent, 'STOP\n');
     // Print the total count of records
-    // console.log(`Number of students: ${records.length}`);
     outText = `Number of students: ${records.length}\n`;
 
     // Group by field type and collect names
@@ -43,26 +38,19 @@ async function countStudents(path) {
       fieldGroups[record.field].push(record.firstname);
     });
 
-    // console.log('---Here-----3-----');
-    // console.log('\n---OUTTEXT-', outText, 'STOP\n');
     // Output the results by field type
     for (const field in fieldGroups) {
       if (Object.prototype.hasOwnProperty.call(fieldGroups, field)) {
         outText += `Number of students in ${field}: ${fieldGroups[field].length}. List: ${fieldGroups[field].join(', ')}\n`;
       }
     }
-    // console.log('---Here-----4-----');
-    // console.log('----OutText', outText);
   } catch (err) {
-    // console.log('---Here-----5-----');
     throw new Error('Cannot load the database');
   }
 }
-// exports.countStudents = countStudents;
+exports.countStudents = countStudents;
 
 const database = process.argv[2];
-// const database = process.argv[2];
-const hostname = '127.0.0.1';
 const port = 1245;
 
 const app = http.createServer((req, res) => {
@@ -71,22 +59,18 @@ const app = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
-    // outText = '';
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('This is the list of our students\n');
-    // console.log('----OutText-- BEFORE', outText, "STOP");
+    // res.statusCode = 200;
+    // res.setHeader('Content-Type', 'text/plain');
+    // res.write('This is the list of our students\n');
     countStudents(database)
-      // .then(() => console.log('\n----->  THEN EXECUTED', outText, 'STOP'))
-      .then(() => res.end(outText.slice(0, -1)));
+      .then(() => res.setHeader('Content-Type', 'text/plain'))
+      .then(() => res.write('This is the list of our students\n'))
+      .then(() => { res.statusCode = 200; })
+      .then(() => res.end(outText.slice(0, -1)))
+      .catch((error) => res.end(`Error: ${error.message}`));
   }
 });
 
-app.listen(port, hostname, () => {
-  console.log(`App running at http://${hostname}:${port}/`);
-});
+app.listen(port);
 
-module.exports = {
-  countStudents,
-  app,
-};
+exports.app = app;
