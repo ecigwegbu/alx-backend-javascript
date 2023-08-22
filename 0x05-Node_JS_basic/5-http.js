@@ -65,7 +65,7 @@ const app = http.createServer((req, res) => {
     countStudents(database)
       .then(() => res.setHeader('Content-Type', 'text/plain'))
       .then(() => res.write('This is the list of our students\n'))
-      .then(() => { res.statusCode = 200; })
+      // .then(() => { res.statusCode = 200; })
       .then(() => res.end(outText.slice(0, -1)))
       .catch((error) => res.end(`Error: ${error.message}`));
   }
