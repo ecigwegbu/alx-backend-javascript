@@ -1,7 +1,7 @@
 // utils.js
 const fs = require('fs').promises;
 
-async function readDatabase(path) {
+export default async function readDatabase(path) {
   try {
     // Read the file asynchronously
     const fileContent = await fs.readFile(path, 'utf8');
@@ -23,7 +23,7 @@ async function readDatabase(path) {
     });
 
     // Print the total count of records
-    console.log(`Number of students: ${records.length}`);
+    // console.log(`Number of students: ${records.length}`);
 
     // Group by field type and collect names
     const fieldGroups = {};
@@ -35,14 +35,10 @@ async function readDatabase(path) {
       fieldGroups[record.field].push(record.firstname);
     });
 
-    // Output the results by field type
-    for (const field in fieldGroups) {
-      if (Object.prototype.hasOwnProperty.call(fieldGroups, field)) {
-        console.log(`Number of students in ${field}: ${fieldGroups[field].length}. List: ${fieldGroups[field].join(', ')}`);
-      }
-    }
+    return fieldGroups;
   } catch (err) {
+    // throw err;
     throw new Error('Cannot load the database');
   }
 }
-module.exports = readDatabase;
+// module.exports = readDatabase;
