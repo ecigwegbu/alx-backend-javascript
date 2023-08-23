@@ -3,7 +3,7 @@
 function calculateNumber(type, a, b) {
   const ra = Math.round(a); // rounded a
   const rb = Math.round(b); // rounded b
-  if (!type || (typeof type !== 'string')) {
+  if (!type || !(['SUM', 'SUBTRACT', 'DIVIDE'].includes(type))) {
     return 'Error';
   }
   if (type === 'SUM'){
@@ -15,6 +15,5 @@ function calculateNumber(type, a, b) {
   if (type === 'DIVIDE'){
     return (rb === 0) ? ('Error') : (Math.round(a) / Math.round(b));
   }
-
 }
 module.exports = calculateNumber;
