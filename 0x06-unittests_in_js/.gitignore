@@ -1,0 +1,9 @@
+tsconfig.js
+node_modules
+.vscode
+*.tmp
+*.bak
+*.js.v*
+*.bak.*
+*.bak*
+package-lock.json
