@@ -12,5 +12,11 @@ describe('sendPaymentRequestToApi', function () {
   it("was called with 'SUM', 100, 20", function () {
     expect(spy.calledWith('SUM', 100, 20)).to.be.true;
   });
+  it("was called once with exactly 'SUM', 100, 20", function () {
+    expect(spy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
+  });
+  it("returned 120", function () {
+    expect(spy.returned(120)).to.be.true;
+  });
   spy.restore();
 });
