@@ -26,4 +26,18 @@ describe('Express App Unittesting', function () {
       done();
     });
   });
+  it('displays a welcome message on login: GET /login', function (done) {
+    // const spy = sinon.spy("getPaymentTokenFromAPI");
+    const options = {
+      url: `http://localhost:${port}/login`,
+      method: 'POST',
+      json: true,
+      body: { userName: 'Guillaume' }
+    };
+    request(options, (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      expect(response.body).to.equal(`Welcome Guillaume`);
+      done();
+    });
+  });
 });
