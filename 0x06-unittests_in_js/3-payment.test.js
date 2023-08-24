@@ -5,7 +5,7 @@ const Utils = require('./utils');
 
 describe('sendPaymentRequestToApi', function () {
   const spy = sinon.spy(Utils, "calculateNumber");
-  payment = sendPaymentRequestToApi(100, 20);
+  const payment = sendPaymentRequestToApi(100, 20);
   it("was  called once", function () {
     expect(spy.calledOnce).to.be.true;
   });

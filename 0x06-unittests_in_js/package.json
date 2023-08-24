@@ -6,5 +6,8 @@
   },
   "scripts": {
     "test": "mocha"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0"
   }
 }
