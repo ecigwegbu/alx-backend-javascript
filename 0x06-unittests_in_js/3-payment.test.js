@@ -1,20 +1,16 @@
 const expect = require('chai').expect;
-const calculateNumber = require('./2-calcul_chai');
+const sinon = require('sinon');
+const sendPaymentRequestToApi = require('./3-payments');
+const Utils = require('./utils');
 
 describe('sendPaymentRequestToApi', function () {
-  it("('SUM', 2.3, 3.7) => 6", function () {
-    expect(calculateNumber('SUM', 2.3, 3.7)).to.equal(6);
+  const spy = sinon.spy(Utils, "calculateNumber");
+  payment = sendPaymentRequestToApi(100, 20);
+  it("was  called once", function () {
+    expect(spy.calledOnce).to.be.true;
   });
-  it("('SUBTRACT', 2.6, 3.2) => 0", function () {
-    expect(calculateNumber('SUBTRACT', 2.6, 3.2)).to.equal(0);
+  it("was called with 'SUM', 100, 20", function () {
+    expect(spy.calledWith('SUM', 100, 20)).to.be.true;
   });
-  it("('DIVIDE',-2.3, 3.7) => -0.5", function () {
-    expect(calculateNumber('DIVIDE', -2.3, 3.7)).to.equal(-0.5);
-  });
-  it("('DIVIDE',-2.3, 0.4) => 'Error'", function () {
-    expect(calculateNumber('DIVIDE', -2.3, 0.4)).to.equal('Error');
-  });
-  it("('sum', 2.0, -0.7) => 'Error'", function () {
-    expect(calculateNumber('sum', 2.0, -0.7)).to.equal('Error');
-  });
+  spy.restore();
 });
