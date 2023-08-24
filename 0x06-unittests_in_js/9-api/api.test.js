@@ -19,4 +19,11 @@ describe('Express App Unittesting', function () {
       done();
     });
   });
+  it('displays "404 When the id is not a number on GET /carte/:id', function (done) {
+    // const spy = sinon.spy("getPaymentTokenFromAPI");
+    request(`http://localhost:${port}/cart/NaN`, (error, response, body) => {
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
+  });
 });
