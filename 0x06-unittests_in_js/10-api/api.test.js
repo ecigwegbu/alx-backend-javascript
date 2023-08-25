@@ -40,4 +40,18 @@ describe('Express App Unittesting', function () {
       done();
     });
   });
+  it('displays payment_methods object on endpoint GET /available_payments', function (done) {
+    // const spy = sinon.spy("getPaymentTokenFromAPI");
+    responseObject = {
+      payment_methods: {
+        credit_cards: true,
+        paypal: false,
+      },
+    };
+    request(`http://localhost:${port}/available_payments`, (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      expect(response.body).to.deep.equal(JSON.stringify(responseObject));
+      done();
+    });
+  });
 });
