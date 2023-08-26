@@ -1,7 +1,7 @@
 // Students controller
-const readDatabase = require('../utils');
+import readDatabase from '../utils.js';
 
-class StudentsController {
+export default class StudentsController {
   // First static method
   static getAllStudents(request, response) {
     // readDatabase('database.csv')
@@ -46,4 +46,4 @@ class StudentsController {
   }
 }
 
-module.exports = StudentsController;
+// module.exports = StudentsController;
