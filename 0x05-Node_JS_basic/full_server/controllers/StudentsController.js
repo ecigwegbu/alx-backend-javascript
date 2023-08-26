@@ -4,7 +4,8 @@ const readDatabase = require('../utils');
 class StudentsController {
   // First static method
   static getAllStudents(request, response) {
-    readDatabase('database.csv')
+    // readDatabase('database.csv')
+    readDatabase(process.env.DB_FILE)
       .then((result) => {
         const fieldGroups = result;
         response.write('This is the list of our students');
