@@ -1,4 +1,4 @@
-import readDatabase from './full_server/utils.js';
+const readDatabase = require('./full_server/utils');
 
 readDatabase('database.csv')
   .then((result) => {

@@ -1,7 +1,7 @@
-// utils.js
+// ./full_server.utils.js
 const fs = require('fs').promises;
 
-export default async function readDatabase(path) {
+async function readDatabase(path) {
   try {
     // Read the file asynchronously
     const fileContent = await fs.readFile(path, 'utf8');
@@ -41,4 +41,4 @@ export default async function readDatabase(path) {
     throw new Error('Cannot load the database');
   }
 }
-// module.exports = readDatabase;
+module.exports = readDatabase;

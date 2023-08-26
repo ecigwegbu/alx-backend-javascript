@@ -39,13 +39,19 @@ async function countStudents(path) {
     });
 
     // Output the results by field type
-    for (const field in fieldGroups) {
-      if (Object.prototype.hasOwnProperty.call(fieldGroups, field)) {
-        outText += `Number of students in ${field}: ${fieldGroups[field].length}. List: ${fieldGroups[field].join(', ')}\n`;
-      }
+    fields = Object.keys(fieldGroups).sort()
+    for (const field of fields) {
+       outText += `Number of students in ${field}: ${fieldGroups[field].length}. List: ${fieldGroups[field].join(', ')}\n`;
     }
+//
+//    for (const field in fieldGroups) {
+//      if (Object.prototype.hasOwnProperty.call(fieldGroups, field)) {
+//        outText += `Number of students in ${field}: ${fieldGroups[field].length}. List: ${fieldGroups[field].join(', ')}\n`;
+//      }
+//    }
   } catch (err) {
-    throw new Error('Cannot load the database');
+    throw err;
+    // throw new Error('Cannot load the database');
   }
 }
 // exports.countStudents = countStudents;
