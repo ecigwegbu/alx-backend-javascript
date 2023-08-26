@@ -15,7 +15,7 @@ class StudentsController {
           response.write(`\nNumber of students in ${field}: ${fieldGroups[field].length}. List: ${fieldGroups[field].join(', ')}`);
         }
         response.status(200).end();
-      })
+        })
       // .catch((err) => response.status(500).send('Cannot load the database'));
       .catch((err) => response.status(500).send(err.message));
   }
@@ -23,8 +23,7 @@ class StudentsController {
   // Second static method
   static getAllStudentsByMajor(request, response) {
     const fields = ['CS', 'SWE'];
-    // const major = request.params.major;
-    const { major } = request.params; // object destructuring recomm by ESLint
+    const major = request.params.major;
     if (major && fields.includes(major)) {
       readDatabase('database.csv')
         .then((result) => {
@@ -35,11 +34,11 @@ class StudentsController {
           // console.log(fields);
           response.write(`List: ${fieldGroups[major].join(', ')}`);
           response.status(200).end();
-        })
+          })
         // .catch((err) => response.status(500).send('Cannot load the database'));
         .catch((err) => response.status(500).send(err.message));
     } else {
-      response.status(500).send('Major parameter must be CS or SWE');
+      response.status(500).send('Major parameter must be CS or SWE')
     }
   }
 }
