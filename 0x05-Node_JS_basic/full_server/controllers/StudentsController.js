@@ -27,7 +27,8 @@ class StudentsController {
     // const major = request.params.major;
     const { major } = request.params; // object destructuring recomm by ESLint
     if (major && fields.includes(major)) {
-      readDatabase('database.csv')
+      // readDatabase('database.csv')
+      readDatabase(process.env.DB_FILE)
         .then((result) => {
           const fieldGroups = result;
           // response.write('This is the list of our students');
