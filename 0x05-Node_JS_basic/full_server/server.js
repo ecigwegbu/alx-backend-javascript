@@ -1,14 +1,14 @@
 // server.js
 const express = require('express');
+const path = require('path');
 const router = require('./routes/index');
-// const path = require('path');
 
 const app = express();
 const port = 1245;
-const dbFile = process.argv[2];
-// const dbFile = path.resolve(__dirname, process.argv[2]);
-process.env.DB_FILE = dbFile; // process.argv[2];
-// console.log(`Using database file at: ${dbFile}`);
+const dbFilename = process.argv[process.argv.length - 1];
+const projectRoot = path.parse(__dirname).dir;
+process.env.DB_FILE = path.resolve(projectRoot, dbFilename);
+// console.log(`Using database file at: ${process.env.DB_FILE}`);
 app.use('/', router);
 
 app.listen(port, () => {
